@@ -19,6 +19,16 @@ The app displays a paginated, scrollable list of planets fetched from the [Star 
 
 ---
 
+## Screenshots
+
+<p align="center">
+  <img src="https://github.com/arvinjayanake/SWAPI-App/blob/main/app/src/main/res/drawable/screenshot_1.jpg?raw=true" alt="Planet List" width="30%" />
+  <img src="https://github.com/arvinjayanake/SWAPI-App/blob/main/app/src/main/res/drawable/screenshot_2.jpg?raw=true" alt="Planet List" width="30%" />
+  <img src="https://github.com/arvinjayanake/SWAPI-App/blob/main/app/src/main/res/drawable/screenshot_3.jpg?raw=true" alt="Planet List" width="30%" />
+</p>
+
+---
+
 ## Project Structure
 
 ```text
@@ -75,7 +85,7 @@ The app displays a paginated, scrollable list of planets fetched from the [Star 
 ### Clone and Run
 
 ```bash
-git clone https://github.com/<your-username>/syscolab-starwars-planets.git
+git clone https://github.com/arvinjayanake/syscolab-starwars-planets.git
 cd syscolab-starwars-planets
 ```
 Open in Android Studio and click Run.
