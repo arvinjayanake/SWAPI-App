@@ -11,26 +11,51 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+/**
+ * UI state for the Planet Details Page.
+ *
+ * Holds loading status, planet data, and network error state for the detail view.
+ *
+ * @property isLoading True if the detail is currently loading.
+ * @property planet The [Planet] data to display, or null if not loaded.
+ * @property networkError True if a network error occurred.
+ */
 data class PlanetDetailPageUIState(
     var isLoading: Boolean = true,
     var planet: Planet? = null,
     val networkError: Boolean = false
 )
 
+/**
+ * ViewModel for the Planet Details Page.
+ *
+ * Handles the logic for loading and exposing planet details based on the planet ID from navigation arguments.
+ * Manages UI state via [PlanetDetailPageUIState].
+ *
+ * @property savedStateHandle State handle for retrieving the planet ID from navigation.
+ * @property planetUseCase Use case for planet-related operations.
+ */
 class PlanetDetailsPageViewModel(
     savedStateHandle: SavedStateHandle,
     private val planetUseCase: PlanetUseCase
 ) : ViewModel() {
 
+    /** Backing state flow for the UI state. */
     private val _uiState = MutableStateFlow(PlanetDetailPageUIState())
+
+    /** Exposed state flow for observing UI state changes. */
     val uiState: StateFlow<PlanetDetailPageUIState> = _uiState
 
+    /** The ID of the planet to display, retrieved from navigation arguments. */
     private val planetId: Int = (savedStateHandle["planetId"] ?: "0").toInt()
 
     init {
         loadPlanetDetail()
     }
 
+    /**
+     * Loads the details for the planet with [planetId], updating UI state based on the result.
+     */
     fun loadPlanetDetail() {
         viewModelScope.launch {
             when (val result = planetUseCase.getPlanetById(planetId)) {

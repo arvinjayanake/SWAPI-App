@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
@@ -41,38 +42,46 @@ android {
 
 dependencies {
 
+    //Core AndroidX Libraries
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
+    //Jetpack Compose Core & UI
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.foundation)
+    //Testing (JUnit, Espresso)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
+    testImplementation("androidx.room:room-testing:2.7.2")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2")
+    //Jetpack Compose Tooling & Testing
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    //viewmodel
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    //ViewModel
     implementation(libs.androidx.lifecycle.viewmodel.compose)
-    //navigation
-    implementation("androidx.navigation:navigation-compose:2.9.1")
-    implementation("androidx.compose.ui:ui:1.8.3")
-    implementation("androidx.compose.runtime:runtime:1.8.3")
-    //
-    implementation("io.coil-kt:coil-compose:2.7.0")
-    //retrofit
+    //Navigation
+    implementation(libs.androidx.navigation.compose)
+    //Runtime
+    implementation(libs.androidx.runtime)
+    //Image Loading
+    implementation(libs.coil.compose)
+    //Network
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.logging.interceptor)
-    //koin
+    //Dependency Injection
     implementation(libs.koin.core)
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
-    //
-    implementation("androidx.compose.foundation:foundation:1.8.3")
+    //Room Database
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    kapt(libs.androidx.room.compiler)
 
 }

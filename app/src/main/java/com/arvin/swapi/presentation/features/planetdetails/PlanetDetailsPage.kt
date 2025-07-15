@@ -1,6 +1,5 @@
 package com.arvin.swapi.presentation.features.planetdetails
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -23,12 +22,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import coil.compose.rememberAsyncImagePainter
-import coil.request.ImageRequest
-import com.arvin.swapi.R
 import com.arvin.swapi.domain.model.getHighResImgUrl
 import com.arvin.swapi.presentation.shared.components.NoInternetScreen
 import com.arvin.swapi.presentation.shared.components.PlanetImageView
@@ -98,7 +92,7 @@ fun PlanetDetailsPage(onBackPressed: () -> Unit) {
                             )
                             Spacer(Modifier.height(16.dp))
                             Text(
-                                "This planet completes one full orbit around its star in ${uiState.planet?.orbital_period ?: "-"} days and experiences a gravitational force of ${uiState.planet?.gravity ?: "-"} at its surface.",
+                                "This planet completes one full orbit around its star in ${uiState.planet?.orbitalPeriod ?: "-"} days and experiences a gravitational force of ${uiState.planet?.gravity ?: "-"} at its surface.",
                                 style = MaterialTheme.typography.bodyLarge,
                                 modifier = Modifier.padding(horizontal = 16.dp)
                             )

@@ -9,21 +9,37 @@ import com.arvin.swapi.domain.model.getIdFromUrl
 import com.arvin.swapi.presentation.features.planetdetails.PlanetDetailsPage
 import com.arvin.swapi.presentation.features.planetlist.PlanetListPage
 
+/**
+ * Defines navigation destination route names for the app.
+ *
+ * Contains constants for identifying the planet list and planet details pages in the navigation graph.
+ */
 object Destinations {
-    const val planetlist = "planetlist"
-    const val planetdetails = "planetdetails"
+
+    /** Route name for the planet list page. */
+    const val PLANET_LIST = "planet_list"
+
+    /** Route name for the planet details page. */
+    const val PLANET_DETAILS = "planet_details"
 }
 
+/**
+ * App navigation graph, defining navigation structure and destinations using Jetpack Compose Navigation.
+ *
+ * Sets up the routes for the planet list and planet details pages.
+ *
+ * @param navigationController The [NavHostController] managing navigation actions.
+ */
 @OptIn(ExperimentalSharedTransitionApi::class)
 @Composable
 fun AppNavGraph(navigationController: NavHostController) {
-    NavHost(navController = navigationController, startDestination = Destinations.planetlist) {
-        composable(Destinations.planetlist) {
+    NavHost(navController = navigationController, startDestination = Destinations.PLANET_LIST) {
+        composable(Destinations.PLANET_LIST) {
             PlanetListPage { planet ->
-                navigationController.navigate("${Destinations.planetdetails}/${planet.getIdFromUrl()}")
+                navigationController.navigate("${Destinations.PLANET_DETAILS}/${planet.getIdFromUrl()}")
             }
         }
-        composable(route = "${Destinations.planetdetails}/{planetId}") {
+        composable(route = "${Destinations.PLANET_DETAILS}/{planetId}") {
             PlanetDetailsPage {
                 navigationController.popBackStack()
             }

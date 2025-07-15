@@ -20,6 +20,15 @@ import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.arvin.swapi.R
 
+/**
+ * Displays a planet image loaded asynchronously from a URL, with rounded corners and a loading indicator.
+ *
+ * Shows a circular progress indicator while the image is loading, and a default image if loading fails.
+ *
+ * @param imgUrl The URL of the image to display.
+ * @param height The height of the image container (default is 250.dp).
+ * @param imageCornerRadius The corner radius for the image container (default is 16.dp).
+ */
 @Composable
 fun PlanetImageView(imgUrl: String?, height: Dp = 250.dp, imageCornerRadius: Dp = 16.dp) {
     val painter = rememberAsyncImagePainter(

@@ -1,9 +1,7 @@
 package com.arvin.swapi.data.remote.api
 
-import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import java.io.File
 import java.security.SecureRandom
 import java.security.cert.X509Certificate
 import javax.net.ssl.HostnameVerifier
@@ -11,6 +9,18 @@ import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
 
+/**
+ * Creates and returns an [OkHttpClient] instance that bypasses SSL certificate validation.
+ *
+ * This client trusts all SSL certificates and hostnames, making it useful for development or testing
+ * against endpoints with expired, invalid, or self-signed SSL certificates.
+ *
+ * **WARNING:** This approach is insecure and should never be used in production as it exposes
+ * the application to man-in-the-middle (MITM) attacks and other security risks.
+ *
+ * @return An [OkHttpClient] that skips all SSL validation and logs HTTP request/response bodies.
+ * @throws RuntimeException if the SSL context cannot be initialized.
+ */
 fun getUnsafeOkHttpClient(): OkHttpClient {
     try {
         val loggingInterceptor = HttpLoggingInterceptor().apply {

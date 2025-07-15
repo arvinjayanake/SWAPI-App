@@ -23,6 +23,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.arvin.swapi.R
 
+/**
+ * A composable UI screen that displays a message and retry button when there is no internet connection.
+ *
+ * Shows an icon, a headline, a message, and a "Try Again" button.
+ *
+ * @param onRetry Lambda function to be invoked when the user clicks the "Try Again" button.
+ */
 @Composable
 fun NoInternetScreen(onRetry: () -> Unit) {
     Surface(
