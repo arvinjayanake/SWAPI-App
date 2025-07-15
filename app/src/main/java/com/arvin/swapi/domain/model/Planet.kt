@@ -10,8 +10,12 @@ data class Planet(
 
 )
 
-fun Planet.getImgUrl(): String {
-    return "https://picsum.photos/id/${getIdFromUrl()}/200/200"
+fun Planet.getHighResImgUrl(): String {
+    return "https://picsum.photos/id/${getIdFromUrl()}/1000/1000"
+}
+
+fun Planet.getThumbnailImgUrl(): String {
+    return "https://picsum.photos/id/${getIdFromUrl()}/300/300"
 }
 
 fun Planet.getIdFromUrl(): Int {
