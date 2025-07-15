@@ -46,3 +46,79 @@ The app displays a paginated, scrollable list of planets fetched from the [Star 
     ├── shared
     │   └── components       # Reusable UI components
     └── theme                # App theming
+```
+---
+
+## Technology Stack
+
+- **Kotlin (100%)** – Modern, safe, and concise programming language
+- **Jetpack Compose** – Declarative UI framework for building native Android UIs
+- **Room** – Local database for offline support
+- **Retrofit** – Type-safe network API client
+- **OkHttp** – HTTP stack (with custom client for SSL issues)
+- **Koin** – Dependency injection for modularity and testability
+- **Coroutines & Flow** – Asynchronous programming and reactive state management
+- **MVVM & Clean Architecture** – For testable and maintainable code
+- **Material 3** – Modern UI theming
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- **Android Studio Giraffe** or later
+- **Android SDK 33+**
+- Internet connection for fetching planets (offline support available after first load)
+- **Minimum SDK:** 26
+
+### Clone and Run
+
+```bash
+git clone https://github.com/<your-username>/syscolab-starwars-planets.git
+cd syscolab-starwars-planets
+```
+Open in Android Studio and click Run.
+
+---
+## Configuration
+
+- No additional configuration needed.
+- All dependencies are managed with Gradle.
+- If you encounter SSL errors (due to SWAPI certificate issues), an "unsafe" OkHttpClient is used in development for seamless fetching.
+
+---
+
+## Usage
+
+- **Planet List:** Displays all planets with name, climate, and image.
+- **Pagination:** Scroll to load more planets.
+- **Details View:** Tap a planet for more info and a high-res image.
+- **Offline Mode:** If API call fails, data loads from local cache (if available).
+- **Retry/No Internet:** User-friendly screens for network errors.
+
+---
+
+## Architecture Overview
+
+### Clean Architecture
+
+- **data:** Handles persistence, network, and mapping.
+- **domain:** Business logic and models.
+- **presentation:** UI, ViewModels, and navigation.
+
+### Repository Pattern
+
+- Isolates data sources (API and local database).
+
+### Use Cases
+
+- Encapsulate business logic, easy to test and reuse.
+
+### ViewModels & StateFlow
+
+- For UI state management and lifecycle awareness.
+
+### DI with Koin
+
+- Enables modular and testable code.
