@@ -132,3 +132,29 @@ Open in Android Studio and click Run.
 ### DI with Koin
 
 - Enables modular and testable code.
+---
+
+## Approach & Trade-offs
+
+### Approach:
+- Followed Clean Architecture to separate concerns across data, domain, and presentation layers.
+- Used Jetpack Compose for all UI rendering to align with modern Android best practices.
+- Retrofit and OkHttp used to fetch data from SWAPI.
+- Room database used to store planets locally for offline support.
+- Implemented pagination to load planets incrementally.
+- Dependency Injection handled using Koin.
+
+### Trade-offs:
+- Used a non-secure OkHttpClient due to SSL issues in SWAPI, which is acceptable in a demo context.
+- Used random Picsum images instead of specific Star Wars images to align with assessment constraints.
+---
+
+## Testing
+
+- Unit tests cover repository logic and use cases.
+- DAO tests are written using Room in-memory database.
+- ViewModels are tested using coroutine test rules.
+
+To run tests:
+```bash
+./gradlew test
